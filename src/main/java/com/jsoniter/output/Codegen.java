@@ -185,6 +185,7 @@ class Codegen {
                 staticGen(clazz, cacheKey, writer, source);
             } finally {
                 writer.close();
+                fileOutputStream.close();
             }
         } finally {
             fileOutputStream.close();
