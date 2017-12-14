@@ -12,9 +12,7 @@ class CodegenImplArray {
         Type[] typeArgs = classInfo.typeArgs;
         Class clazz = classInfo.clazz;
         Type compType = Object.class;
-        if (typeArgs.length == 0) {
-            // default to List<Object>
-        } else if (typeArgs.length == 1) {
+        if (typeArgs.length == 1) {
             compType = typeArgs[0];
         } else {
             throw new IllegalArgumentException(
