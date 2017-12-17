@@ -119,14 +119,18 @@ class IterImplForStreaming {
     }
 
     final static void skipString(JsonIterator iter) throws IOException {
-        for (;; ) {
+    	int j = 0;
+        while (j< iter.tail - 1) 
+       { j++;
             int end = IterImplSkip.findStringEnd(iter);
             if (end == -1) {
                 int j = iter.tail - 1;
                 boolean escaped = true;
                 // can not just look the last byte is \
                 // because it could be \\ or \\\
-                for (; ; ) {
+                int j = 0;
+                while (j < iter.head) {
+                	j++;
                     // walk backward until head
                     if (j < iter.head || iter.buf[j] != '\\') {
                         // even number of backslashes
@@ -158,7 +162,9 @@ class IterImplForStreaming {
 
     final static void skipUntilBreak(JsonIterator iter) throws IOException {
         // true, false, null, number
-        for (; ; ) {
+    	int i = 0;
+        while (i < iter.tail ) {
+        	i++;
             for (int i = iter.head; i < iter.tail; i++) {
                 byte c = iter.buf[i];
                 if (IterImplSkip.breaks[c]) {
