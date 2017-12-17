@@ -159,7 +159,7 @@ public class JsonStream extends OutputStream {
             return;
         }
         int i = 0;
-        for (; ; ) {
+        for (int i = 0;i < buf.length -count ;i++ ) {
             int available = buf.length - count;
             if (available < remaining) {
                 remaining -= available;
