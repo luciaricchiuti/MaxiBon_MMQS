@@ -65,7 +65,7 @@ class IterImplSkip {
                     return i + 1;
                 } else {
                     int j = i - 1;
-                    for (; ; ) {
+                    for (int j = 0;j < iter.head ; j++) {
                         if (j < iter.head || iter.buf[j] != '\\') {
                             // even number of backslashes
                             // either end of buffer, or " found
