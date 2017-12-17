@@ -98,7 +98,7 @@ abstract class Base64 {
         final int dLen = ((sLen - 1) / 3 + 1) << 2;   // Returned character count
 
         // Encode even 24-bits
-        for (int s = 0, d = start; s < eLen;) {
+        for (int s = 0, d = start; s < eLen;s++) {
             // Copy next three bytes into lower 24 bits of int, paying attension to sign.
             int i = (sArr[s++] & 0xff) << 16 | (sArr[s++] & 0xff) << 8 | (sArr[s++] & 0xff);
 
@@ -132,7 +132,7 @@ abstract class Base64 {
         final int dLen = ((sLen - 1) / 3 + 1) << 2;   // Returned character count
 
         // Encode even 24-bits
-        for (int s = 0; s < eLen;) {
+        for (int s = 0; s < eLen;s++) {
             // Copy next three bytes into lower 24 bits of int, paying attension to sign.
             int i = (sArr[s++] & 0xff) << 16 | (sArr[s++] & 0xff) << 8 | (sArr[s++] & 0xff);
 
@@ -226,7 +226,7 @@ abstract class Base64 {
 
         // Decode all but the last 0 - 2 bytes.
         int d = 0;
-        for (int cc = 0, eLen = (len / 3) * 3; d < eLen;) {
+        for (int cc = 0, eLen = (len / 3) * 3; d < eLen;cc++) {
             // Assemble three bytes into an int from four "valid" characters.
             int i = IA[sArr[sIx++]] << 18 | IA[sArr[sIx++]] << 12 | IA[sArr[sIx++]] << 6 | IA[sArr[sIx++]];
 
