@@ -16,7 +16,7 @@ class IterImpl {
         }
         long hash = 0x811c9dc5;
         int i = iter.head;
-        for (; i < iter.tail; i++) {
+        for (int i = 0; i < iter.tail; i++) {
             byte c = iter.buf[i];
             if (c == '"') {
                 break;
@@ -150,7 +150,7 @@ class IterImpl {
 
     final static byte nextToken(final JsonIterator iter) throws IOException {
         int i = iter.head;
-        for (; ; ) {
+        for (int i = 0;i<iter.head;i++ ) {
             byte c = iter.buf[i++];
             switch (c) {
                 case ' ':
@@ -211,7 +211,7 @@ class IterImpl {
     public final static int readStringSlowPath(JsonIterator iter, int j) throws IOException {
         try {
             boolean isExpectingLowSurrogate = false;
-            for (int i = iter.head; i < iter.tail; ) {
+            for (int i = iter.head; i < iter.tail; i++ ) {
                 int bc = iter.buf[i++];
                 if (bc == '"') {
                     iter.head = i;
