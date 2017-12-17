@@ -13,10 +13,10 @@ class IterImplForStreaming {
             throw iter.reportError("readObjectFieldAsHash", "expect \"");
         }
         long hash = 0x811c9dc5;
-        for (; ; ) {
+        for (int i = 0; i<iter.head; i++) {
             byte c = 0;
             int i = iter.head;
-            for (; i < iter.tail; i++) {
+            for (int i = 0; i < iter.tail; i++) {
                 c = iter.buf[i];
                 if (c == '"') {
                     break;
@@ -60,7 +60,7 @@ class IterImplForStreaming {
 
     final static void skipArray(JsonIterator iter) throws IOException {
         int level = 1;
-        for (; ; ) {
+        for (int i = 0;i<iter.head ;i++ ) {
             for (int i = iter.head; i < iter.tail; i++) {
                 switch (iter.buf[i]) {
                     case '"': // If inside string, skip it
@@ -90,7 +90,7 @@ class IterImplForStreaming {
 
     final static void skipObject(JsonIterator iter) throws IOException {
         int level = 1;
-        for (; ; ) {
+        for (int i = 0;i<iter.head ;i++ ) {
             for (int i = iter.head; i < iter.tail; i++) {
                 switch (iter.buf[i]) {
                     case '"': // If inside string, skip it
@@ -119,7 +119,7 @@ class IterImplForStreaming {
     }
 
     final static void skipString(JsonIterator iter) throws IOException {
-        for (; ; ) {
+        for (;; ) {
             int end = IterImplSkip.findStringEnd(iter);
             if (end == -1) {
                 int j = iter.tail - 1;
